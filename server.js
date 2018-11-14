@@ -24,6 +24,11 @@ ShoppingList.create('tomatoes', 3);
 ShoppingList.create('peppers', 4);
 
 Recipes.create('chocolate milk', ['cocoa', 'milk', 'sugar']);
+Recipes.create('milkshake', [
+  '2 tbsp cocoa',
+  '2 cups vanilla ice cream',
+  '1 cup milk'
+]);
 
 // when the root of this route is called with GET, return
 // all current ShoppingList items by calling `ShoppingList.get()`
@@ -110,7 +115,7 @@ app.put('/recipes/:id', jsonParser, (req, res) => {
     return res.status(400).send(message);
   }
   console.log(`Updating recipe list item \`${req.params.id}\``);
-  ShoppingList.update({
+  Recipes.update({
     id: req.params.id,
     name: req.body.name,
     ingredients: req.body.ingredients
